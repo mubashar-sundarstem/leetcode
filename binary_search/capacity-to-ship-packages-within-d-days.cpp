@@ -1,25 +1,14 @@
-#include <iostream>
-#include <map>
-#include <cmath>
-#include <algorithm>
-#include <vector>
-#include <queue>
-#include <climits>
-using namespace std;
-
-int main(){
-    int weight_sz,days;//input of weight array size and days
-    cin >> weight_sz >> days;
-    vector<int> weight;
-    int Asum = 0;//array sum
-    int maxe = 0;//max element
-    for(int i = 0;i < weight_sz;i++){//input of array
-        int h;
-        cin >> h;
+class Solution {
+public:
+    int shipWithinDays(vector<int>& weight, int days) {
+        int weight_sz = weight.size();
+    int Asum = 0;
+    int maxe = 0;
+    for(int i = 0;i < weight_sz;i++){
+        int h = weight[i];
         maxe = max(maxe,h);
         Asum+=h;
-        weight.push_back(h);
-    }Asum+=10;
+    }Asum+=1;
     int leftp = maxe;//left pointer
     int rightp = Asum;//right pointer
     int sumcheck = 0;
@@ -45,5 +34,6 @@ int main(){
             ans = min(ans,mid);
             rightp = mid-1;
         }
-    }cout << ans << endl;
-}
+    }return ans;
+    }
+};
